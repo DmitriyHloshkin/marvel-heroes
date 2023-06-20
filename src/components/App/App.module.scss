@@ -1,0 +1,13 @@
+.heroes {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 55px;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  .heroes {
+    justify-content: center;
+  }
+}

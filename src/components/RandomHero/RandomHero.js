@@ -23,24 +23,21 @@ class RandomHero extends Component {
         wiki: null,
         homepage: null,
       }
-    };
-
-    this.updateHero();
+    }; 
   }
 
   onChangeHero = () => this.updateHero();
 
   updateHero = async () => {
-    let { idCollect } = this.state;
+    
+  
+    const { idCollect, loaded } = this.state;
 
     const getRandomHero = (collect) => idCollect[Math.floor(Math.random() * (idCollect.length - 1))];
   
     try {
-      this.setState({loaded: true});
-
-      if (!idCollect) {
-        idCollect = await this.MarvelService.getAllIdHero();
-        this.setState({idCollect});
+      if (!loaded) {
+        this.setState({loaded: true});
       }
       
       const dataHero = await this.MarvelService.getCharacterById(getRandomHero(idCollect));
@@ -57,6 +54,14 @@ class RandomHero extends Component {
       });
     }
 
+  }
+
+  componentDidMount() {
+    this.MarvelService.getAllIdHero()
+                      .then(idCollect => {
+                        this.setState({idCollect},this.updateHero);
+                      })
+    
   }
 
   render() {

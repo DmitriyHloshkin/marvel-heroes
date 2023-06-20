@@ -1,3 +1,11 @@
 .spiner {
   display: block;
 }
+
+section[class *="heroes"] {
+  img[class *="spiner"] { 
+    margin-left: 10%;
+    align-self: flex-start;
+    height: 250px;
+  }
+}

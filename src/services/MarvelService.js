@@ -32,7 +32,9 @@ class MarvelService {
   }
 
   getAllIdHero = () => {
-    return this.getAllCharacter({limit: 100, offset: 100})
+    const randomOffset = Math.floor(Math.random() * (1000 - 1 + 1)) + 1;
+
+    return this.getAllCharacter({limit: 100, offset: randomOffset})
                 .then(res => res.data.results.map(hero => hero.id))
   }
 
@@ -40,7 +42,7 @@ class MarvelService {
     const dataHero = data.data.results[0],
           reduceDescr = dataHero.description ? dataHero.description.slice(0, 150) + '...' : "does not contain a description",
           descr = dataHero.description ? dataHero.description : "does not contain a description";
-
+          
     return {
         name: dataHero.name,
         reduceDescr,
@@ -48,6 +50,7 @@ class MarvelService {
         thumbnail: dataHero.thumbnail.path + `.${dataHero.thumbnail.extension}`,
         wiki: dataHero.urls[0].url,
         homepage: dataHero.urls[1].url,
+        comics: dataHero.comics.items,
     }
   }
 

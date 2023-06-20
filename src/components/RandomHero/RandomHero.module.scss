@@ -7,6 +7,7 @@
 }
 
 .aboutSection {
+  flex: 1 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,6 +17,7 @@
 }
 
 .randomSection {
+  flex: 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,6 +80,7 @@
 }
 
 @media (max-width: 991px) {
+
   .aboutSection {
     padding: 20px 10px 10px 15px;
   }
@@ -104,10 +107,15 @@
     }
   }
 
-.imageHero {
-  width: 140px;
-  height: 140px;
+  .imageHero {
+    width: 140px;
+    height: 140px;
   }
+
+  .randomHero {
+    height: 300px;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -118,7 +126,7 @@
 
   .aboutSection {
     height: 380px;
-    width: 95%;
+    width: 100%;
     order: 2;
     justify-content: flex-start;
 
@@ -131,7 +139,7 @@
   }
 
   .randomSection {
-    width: 94%;
+    width: 100%;
     order: 1;
   }
 
@@ -147,6 +155,11 @@
 @media (max-width: 575px) {
   .aboutSection {
     height: 340px;
+    padding-left:6px;
+  }
+
+  .randomSection {
+    padding-left:4px;
   }
 
   .randomHero {
